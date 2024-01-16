@@ -114,10 +114,6 @@ export default function Signup() {
 								</InputGroup>
 							</FormControl>
 							<Stack spacing={5} pt={2}>
-								<Turnstile
-									ref={turnstileRef}
-									siteKey="0x4AAAAAAAI6ckchuGZipSqE"
-								/>
 								<Button
 									loadingText="Submitting"
 									size="lg"

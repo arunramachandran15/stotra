@@ -151,10 +151,7 @@ export default function Login() {
                     <Text>Forgot password?</Text>
                   </Link>
                 </Stack> */}
-								<Turnstile
-									ref={turnstileRef}
-									siteKey="0x4AAAAAAAI6ckchuGZipSqE"
-								/>
+
 
 								<Button type="submit" onClick={handleSubmit}>
 									Sign in

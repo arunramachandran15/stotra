@@ -7,12 +7,7 @@ require("dotenv").config();
 const password = process.env.STOTRA_MONGODB_PASSWORD;
 
 const uri =
-	"mongodb+srv://" +
-	process.env.STOTRA_MONGODB_USERNAME +
-	":" +
-	password +
-	"@" +
-	process.env.STOTRA_MONGODB_CLUSTER +
+	"mongodb://127.0.0.1:27017" +
 	"/users?authMechanism=DEFAULT&retryWrites=true&w=majority";
 
 mongoose.connect(uri);

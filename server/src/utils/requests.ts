@@ -8,9 +8,13 @@ dotenv.config();
 
 export const fetchStockData = async (symbol: string): Promise<any> => {
 	const cacheKey = symbol + "-quote";
+	console.log("From fetchStockData:")
+
 
 	try {
 		if (stockCache.has(cacheKey)) {
+			console.log("From cache:" + cacheKey)
+
 			return stockCache.get(cacheKey);
 		} else {
 			const quote = await yahooFinance.quoteCombine(symbol, {
@@ -78,11 +82,14 @@ export const fetchHistoricalStockData = async (
 	const cacheKey = symbol + "-historical-" + periodTerm;
 
 	try {
+		console.log("From fetchHistoricalStockData:")
+
 		if (stockCache.has(cacheKey)) {
+			console.log("From cache:" + cacheKey)
 			return stockCache.get(cacheKey);
 		} else {
 			let formattedData: number[][] = [];
-
+			console.log(periodTerm + " : periodterm")
 			if (periodTerm == "short") {
 				// If the period is less than 1 month, use intraday data from Alpha Vantage
 				let res = await axios.get(
@@ -134,6 +141,7 @@ export const searchStocks = async (query: string): Promise<any> => {
 		enableCb: false,
 		enableEnhancedTrivialQuery: false,
 	};
+	console.log("From searchStocks yahoo finance api:" + query)
 
 	return yahooFinance
 		.search(query, queryOptions)

@@ -29,7 +29,7 @@ const getNews = async (req: Request, res: Response) => {
 		process.env.STOTRA_NEWSFILTER_API === undefined ||
 		process.env.STOTRA_NEWSFILTER_API === ""
 	) {
-		console.warn("No NewsFilter API key provided. Using Yahoo Finance API.");
+		console.warn("From getNews No NewsFilter API key provided. Using Yahoo Finance API.*********************************************************");
 		yahooNews(symbol)
 			.then((news) => {
 				res.status(200).json(news);
@@ -40,7 +40,7 @@ const getNews = async (req: Request, res: Response) => {
 			});
 		return;
 	}
-
+	console.log("From get News : newsFilter api key available")
 	const query = {
 		queryString:
 			symbolQuery +
@@ -52,6 +52,8 @@ const getNews = async (req: Request, res: Response) => {
 	searchApi
 		.getNews(query)
 		.then((response: any) => {
+			console.warn("No NewsFilter API key provided. Using Yahoo Finance API.*********************************************************");
+
 			let news = response.articles.map((newsItem: any) => {
 				return {
 					title: newsItem.title,
